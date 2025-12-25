@@ -99,7 +99,64 @@ return {
     config = function() vim.cmd "colorscheme rose-pine" end,
   },
 
-  { "rebelot/kanagawa.nvim" },
+  {
+    "rebelot/kanagawa.nvim",
+    name = "kanagawa",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("kanagawa").setup {
+        compile = true, -- cache highlights, faster startup
+        undercurl = true,
+        commentStyle = { italic = true },
+        functionStyle = {},
+        keywordStyle = { italic = true },
+        statementStyle = { bold = true },
+        typeStyle = {},
+        transparent = false, -- set true if you hate backgrounds
+        dimInactive = false,
+        terminalColors = true,
+
+        colors = {
+          palette = {},
+          theme = {
+            wave = {},
+            lotus = {},
+            dragon = {},
+          },
+        },
+
+        overrides = function(colors)
+          local c = colors.palette
+          return {
+            -- cleaner line numbers
+            LineNr = { fg = c.sumiInk4 },
+            CursorLineNr = { fg = c.crystalBlue, bold = true },
+
+            -- floats that don’t burn your eyes
+            NormalFloat = { bg = c.sumiInk1 },
+            FloatBorder = { fg = c.sumiInk4 },
+
+            -- diagnostics that don’t scream
+            DiagnosticVirtualTextError = { fg = c.peachRed },
+            DiagnosticVirtualTextWarn = { fg = c.surimiOrange },
+            DiagnosticVirtualTextInfo = { fg = c.waveAqua1 },
+            DiagnosticVirtualTextHint = { fg = c.springGreen },
+
+            -- popup menus
+            Pmenu = { bg = c.sumiInk1 },
+            PmenuSel = { bg = c.waveBlue1 },
+          }
+        end,
+      }
+
+      -- pick ONE variant
+      vim.cmd "colorscheme kanagawa-wave"
+      -- vim.cmd("colorscheme kanagawa-dragon")
+      -- vim.cmd("colorscheme kanagawa-lotus")
+    end,
+  },
+
   { "ellisonleao/gruvbox.nvim" },
   { "catppuccin/nvim" },
   {
