@@ -37,19 +37,19 @@ return {
             { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
             { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
-          header = table.concat({
-            "███████╗██╗██████╗ ███████╗███████╗██╗  ██╗   ██╗",
-            "██╔════╝██║██╔══██╗██╔════╝██╔════╝██║  ╚██╗ ██╔╝",
-            "█████╗  ██║██████╔╝█████╗  █████╗  ██║   ╚████╔╝",
-            "██╔══╝  ██║██╔══██╗██╔══╝  ██╔══╝  ██║    ╚██╔╝ ",
-            "██║     ██║██║  ██║███████╗██║     ███████╗██║ ",
-            "╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═╝     ╚══════╝╚═╝ ",
-          }, "\n"),
+          header = [[
+███████╗██╗██████╗ ███████╗███████╗██╗  ██╗   ██╗
+██╔════╝██║██╔══██╗██╔════╝██╔════╝██║  ╚██╗ ██╔╝
+█████╗  ██║██████╔╝█████╗  █████╗  ██║   ╚████╔╝
+██╔══╝  ██║██╔══██╗██╔══╝  ██╔══╝  ██║    ╚██╔╝ 
+██║     ██║██║  ██║███████╗██║     ███████╗██║ 
+╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═╝     ╚══════╝╚═╝ 
+]],
         },
       },
     },
   },
-
+  { "nvim-tree/nvim-web-devicons", opts = {} },
   -- You can disable default plugins as follows:
   { "max397574/better-escape.nvim", enabled = false },
 
@@ -159,13 +159,14 @@ return {
 
   { "ellisonleao/gruvbox.nvim" },
   { "catppuccin/nvim" },
+  { "nvim-mini/mini.nvim", version = "*" },
   {
     "zaldih/themery.nvim",
     lazy = false,
     config = function()
       require("themery").setup {
         livePreview = true,
-        themes = { "rose-pine", "kanagawa", "catppuccin", "gruvbox" },
+        themes = { "rose-pine", "kanagawa", "catppuccin", "gruvbox", "astrodark" },
       }
     end,
   },
